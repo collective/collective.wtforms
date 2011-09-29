@@ -4,7 +4,7 @@ from plone.app.testing.layers import FunctionalTesting
 from plone.app.testing.layers import IntegrationTesting
 from zope.configuration import xmlconfig
 from plone.testing import z2
-from collective.wtforms.views import WTFormView
+from collective.wtforms.views import WTFormView, WTFormControlPanelView
 from wtforms import Form, TextField
 from wtforms import validators
 
@@ -83,7 +83,7 @@ class TestFieldsetView(WTFormView):
         self.buttonClicked = button
 
 
-class TestControlPanelView(WTFormView):
+class TestControlPanelView(WTFormControlPanelView):
     formClass = TestForm
     csrfProtect = False
     buttons = ('Save', 'Cancel')
