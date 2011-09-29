@@ -1,0 +1,31 @@
+<form action="" method="post"
+    class="edit-form enableUnloadProtection wtform" enctype="multipart/form-data"
+    id="" tal:attributes="action request/URL;
+                          id string:${view/prefix}-${view/viewname}">
+
+  <input type="hidden" name="fieldset.current" value="" originalvalue="">
+    
+  <tal:fieldset tal:repeat="fieldset view/iterfieldsets">
+    <fieldset tal:define="legend python: fieldset[0];
+                          fields python: fieldset[1];"
+              tal:omit-tag="not: view/wrapWithFieldset">
+      <legend tal:content="legend" tal:condition="view/wrapWithFieldset">Fieldset Title</legend>
+      <tal:fields tal:repeat="field fields">
+        <div tal:replace="structure python: view.renderField(field)" />
+      </tal:fields>
+    </fieldset>
+  </tal:fieldset>
+  <div class="visualClear"><!-- --></div>
+
+  <div id="actionsView" class="formControls">
+    <span class="actionButtons">
+      <tal:buttons tal:repeat="button view/buttons">
+        <input type="submit" 
+            tal:define="fixedName python: view.fixName(button);
+                        name string:${view/buttonPrefix}${fixedName}"
+            tal:attributes="id name; name name; value button" class="context" /> 
+      </tal:buttons>
+    </span>
+  </div>
+  <span tal:condition="view/csrfProtect" tal:replace="structure context/@@authenticator/authenticator"/>
+</form>

@@ -1,0 +1,18 @@
+<tal:field tal:define="field nocall: options/field;
+                       errors field/errors">
+  <div class="field" tal:attributes="class python: errors and 'field error' or 'field'">
+    <label tal:replace="structure field/label"></label>
+    <span class="fieldRequired" title="Required" tal:condition="nocall: python: field.flags.required">
+      (Required)
+    </span>
+    <div class="errors">
+      <ul tal:repeat="error errors">
+        <li tal:content="error" />
+      </ul>
+    </div>
+    <div class="widget">
+      <div tal:replace="structure field" />
+      <div class="formHelp" tal:content="field/description">Form Help.</div>
+    </div>
+  </div>
+</tal:field>
