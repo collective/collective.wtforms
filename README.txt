@@ -123,4 +123,10 @@ validate
     Check csrf protection and validates the form.
 
 submit
-    The method you must override to handle the form sumission and run validation.
+    The method you must override to handle the form sumission and run validation. Return a value to override rendering the template(self.index()). For instance, if you do a redirect, there is no need to render the page also::
+
+        def submit(self, button):
+            if button == 'Save' and self.validate():
+                self.context.value = self.form.one.data
+                self.request.response.redirect(self.context.absolute_url())
+                return 1
