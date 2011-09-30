@@ -25,7 +25,6 @@ The basic form is constructed like so::
             if button == 'Create' and self.validate():
                 # do fun stuff here
                 self.context.value = self.form.one.data
-                return 1
 
 Then wire up the form with zcml::
     
@@ -62,7 +61,6 @@ easily also::
             if button == 'Create' and self.validate():
                 # do fun stuff here
                 self.context.value = self.form.one.data
-                return 1
 
 This will render the form in the standard plone feildsets.
 
@@ -81,7 +79,6 @@ It's also possible to easily construct a control panel form::
             if button == 'Save' and self.validate():
                 # do fun stuff here
                 self.context.value = self.form.one.data
-                return 1
 
 WTFormView Class Properties
 ---------------------------
