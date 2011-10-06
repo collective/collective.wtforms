@@ -41,10 +41,35 @@ class WTFormView(BrowserView):
     def fixName(self, name):
         return name.replace(' ', '').replace(',', '')
 
+    def mungeForm(self, form):
+        pass
+
+    def getButtonName(self, button):
+        return '%s%s' % (self.buttonPrefix, self.fixName(button))
+
+    @property
+    def submitted(self):
+        return self.request.get('REQUEST_METHOD') == 'POST' and \
+            self.request.get('form.submitted', 'false') == 'true'
+
+    @property
+    def data(self):
+        return {}
+
     @property
     @memoize
     def form(self):
-        return self.formClass(PostData(self.request.form), prefix=self.prefix)
+        if not self.submitted:
+            data = self.data
+            for key, value in data.items():
+                data[self.prefix + '-' + key] = value
+                del data[key]
+        else:
+            data = {}
+        data.update(self.request.form)
+        form = self.formClass(PostData(data), prefix=self.prefix)
+        self.mungeForm(form)
+        return form
 
     def renderField(self, field):
         return self.fieldTemplate(field=field)
@@ -70,10 +95,9 @@ class WTFormView(BrowserView):
             return 1
 
     def __call__(self):
-        if self.request.get('REQUEST_METHOD') == 'POST':
+        if self.submitted:
             for button in self.buttons:
-                if button == self.request.get('%s%s' % (self.buttonPrefix,
-                                                        self.fixName(button))):
+                if button == self.request.get(self.getButtonName(button)):
                     result = self.submit(button)
                     if result:
                         return result
@@ -98,4 +122,3 @@ class WTFormView(BrowserView):
 class WTFormControlPanelView(WTFormView):
     index = ViewPageTemplateFile('controlpanelform.pt')
     status = None
-

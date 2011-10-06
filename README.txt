@@ -113,16 +113,22 @@ fieldsets
 form
     The instance of the WTForm form that is created on rendering the form.
 
-renderField
+data
+    Override this property to specify default values to populate the form with. This must return a dictionary.
+
+submitted
+    Boolean if the form was submitted or not.
+
+renderField(field)
     Method to render a specific field.
 
-renderForm
+renderForm()
     Method to render the entire form.
 
-validate
+validate()
     Check csrf protection and validates the form.
 
-submit
+submit(button)
     The method you must override to handle the form sumission and run validation. Return a value to override rendering the template(self.index()). For instance, if you do a redirect, there is no need to render the page also::
 
         def submit(self, button):
@@ -130,3 +136,5 @@ submit
                 self.context.value = self.form.one.data
                 self.request.response.redirect(self.context.absolute_url())
                 return 1
+mungeForm(form)
+    A method to mess with the form after it is created. This is what can be used to apply dynamic choices.

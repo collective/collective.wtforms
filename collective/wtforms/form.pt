@@ -19,6 +19,7 @@
 
   <div id="actionsView" class="formControls">
     <span class="actionButtons">
+      <input type="hidden" name="form.submitted" value="true" />
       <tal:buttons tal:repeat="button view/buttons">
         <input type="submit" 
             tal:define="fixedName python: view.fixName(button);
