@@ -29,6 +29,7 @@ class TestForm(unittest.TestCase):
         self.request.environ['REQUEST_METHOD'] = 'POST'
         self.request.form[self.getButtonName('Create')] = 'Create'
         self.request.form[self.getFieldName('one')] = 'Foobar'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-form')
         view()
         self.assertEquals(view.buttonClicked, 'Create')
@@ -38,6 +39,7 @@ class TestForm(unittest.TestCase):
     def test_basic_form_submit_not_valid(self):
         self.request.environ['REQUEST_METHOD'] = 'POST'
         self.request.form[self.getButtonName('Create')] = 'Create'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-form')
         result = view()
         self.assertTrue('<div class="field error">' in result)
@@ -47,6 +49,7 @@ class TestForm(unittest.TestCase):
     def test_basic_form_submit_cancel_clicked(self):
         self.request.environ['REQUEST_METHOD'] = 'POST'
         self.request.form[self.getButtonName('Cancel')] = 'Cancel'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-form')
         view.valid = True
         view()
@@ -55,6 +58,7 @@ class TestForm(unittest.TestCase):
 
     def test_basic_form_only_works_on_post(self):
         self.request.form[self.getButtonName('Create')] = 'Create'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-form')
         view()
         self.assertEquals(view.buttonClicked, None)
@@ -69,6 +73,7 @@ class TestForm(unittest.TestCase):
         self.request.form[self.getButtonName('Yes')] = 'Yes'
         self.request.form[self.getFieldName('one')] = 'Foo'
         self.request.form[self.getFieldName('four')] = 'bar'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-fieldset')
         view()
         self.assertEquals(view.buttonClicked, 'Yes')
@@ -79,6 +84,7 @@ class TestForm(unittest.TestCase):
     def test_fieldset_form_submit_not_valid(self):
         self.request.environ['REQUEST_METHOD'] = 'POST'
         self.request.form[self.getButtonName('Yes')] = 'Yes'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-fieldset')
         result = view()
         self.assertTrue('<div class="field error">' in result)
@@ -88,6 +94,7 @@ class TestForm(unittest.TestCase):
     def test_fieldset_form_submit_cancel_clicked(self):
         self.request.environ['REQUEST_METHOD'] = 'POST'
         self.request.form[self.getButtonName('No')] = 'No'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-fieldset')
         view.valid = True
         view()
@@ -96,6 +103,7 @@ class TestForm(unittest.TestCase):
 
     def test_fieldset_form_only_works_on_post(self):
         self.request.form[self.getButtonName('Yes')] = 'Yes'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-fieldset')
         view()
         self.assertEquals(view.buttonClicked, None)
@@ -109,6 +117,7 @@ class TestForm(unittest.TestCase):
         self.request.environ['REQUEST_METHOD'] = 'POST'
         self.request.form[self.getButtonName('Save')] = 'Save'
         self.request.form[self.getFieldName('one')] = 'Foobar'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-controlpanel-form')
         view()
         self.assertEquals(view.buttonClicked, 'Save')
@@ -118,6 +127,7 @@ class TestForm(unittest.TestCase):
     def test_controlpanel_form_submit_not_valid(self):
         self.request.environ['REQUEST_METHOD'] = 'POST'
         self.request.form[self.getButtonName('Save')] = 'Save'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-controlpanel-form')
         result = view()
         self.assertTrue('<div class="field error">' in result)
@@ -127,6 +137,7 @@ class TestForm(unittest.TestCase):
     def test_controlpanel_form_submit_cancel_clicked(self):
         self.request.environ['REQUEST_METHOD'] = 'POST'
         self.request.form[self.getButtonName('Cancel')] = 'Cancel'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-controlpanel-form')
         view.valid = True
         view()
@@ -135,6 +146,7 @@ class TestForm(unittest.TestCase):
 
     def test_controlpanel_form_only_works_on_post(self):
         self.request.form[self.getButtonName('Save')] = 'Save'
+        self.request.form['form.submitted'] = 'true'
         view = self.getView('test-controlpanel-form')
         view()
         self.assertEquals(view.buttonClicked, None)
