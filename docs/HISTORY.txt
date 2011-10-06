@@ -1,7 +1,14 @@
 Changelog
 =========
 
-1.0 (unreleased)
-----------------
+
+1.0a2 (unreleased)
+------------------
+
+- Fixed control panel template used.
+
+
+1.0a1 (2011-09-29)
+------------------
 
 - Initial release

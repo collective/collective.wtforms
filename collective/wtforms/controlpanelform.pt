@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xml:lang="en" lang="en"
+      tal:omit-tag=""
+      metal:define-macro="controlpanel"
+      i18n:domain="plone">
+
+<body>
+
+<metal:block use-macro="context/prefs_main_template/macros/master">
+  <metal:main fill-slot="prefs_configlet_main">
+    <metal:form metal:define-macro="form">
+      <metal:block define-macro="header">
+        <dl tal:define="status view/status"
+            tal:condition="status"
+            class="portalMessage info">
+          <dt i18n:translate="">
+            Info
+          </dt>
+          <dd tal:content="view/status" />
+        </dl>
+      </metal:block>
+
+      <a href=""
+         id="setup-link"
+         tal:attributes="href string:$portal_url/plone_control_panel"
+         i18n:translate="">
+          Site Setup
+      </a> &rsaquo;
+
+      <h1 class="documentFirstHeading"
+          i18n:translate=""
+          tal:condition="view/label"
+          tal:content="view/label"
+          metal:define-slot="heading">
+          Do something
+      </h1>
+
+      <div class="documentDescription" i18n:translate=""
+         tal:condition="view/description"
+         tal:content="view/description">
+          Description
+      </div>
+
+      <div id="content-core">
+        <div tal:replace="structure view/renderForm" />
+      </div>
+    </metal:form>
+  </metal:main>
+</metal:block>
+</body>
+</html>

@@ -97,3 +97,5 @@ class WTFormView(BrowserView):
 
 class WTFormControlPanelView(WTFormView):
     index = ViewPageTemplateFile('controlpanelform.pt')
+    status = None
+
