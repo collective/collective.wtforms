@@ -2,10 +2,14 @@ Changelog
 =========
 
 
-1.0a2 (unreleased)
+1.0a2 (2011-10-06)
 ------------------
 
 - Fixed control panel template used.
+
+- add ability to easily mess with form after creation
+
+- add ability to provide initial data to form values
 
 
 1.0a1 (2011-09-29)
