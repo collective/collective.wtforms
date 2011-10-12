@@ -61,13 +61,12 @@ class WTFormView(BrowserView):
     def form(self):
         if not self.submitted:
             data = self.data
-            for key, value in data.items():
-                data[self.prefix + '-' + key] = value
-                del data[key]
+            formdata = PostData({})
         else:
             data = {}
+            formdata = PostData(self.request.form)
         data.update(self.request.form)
-        form = self.formClass(PostData(data), prefix=self.prefix)
+        form = self.formClass(formdata, prefix=self.prefix, **data)
         self.mungeForm(form)
         return form
 
@@ -94,15 +93,19 @@ class WTFormView(BrowserView):
             self.request.response.redirect(self.context.absolute_url())
             return 1
 
+    @memoize
+    def hasButtonSubmitted(self):
+        for button in self.buttons:
+            if button == self.request.get(self.getButtonName(button)):
+                return button
+
     def __call__(self):
         if self.submitted:
-            for button in self.buttons:
-                if button == self.request.get(self.getButtonName(button)):
-                    result = self.submit(button)
-                    if result:
-                        return result
-                    else:
-                        break
+            button = self.hasButtonSubmitted()
+            if button:
+                result = self.submit(button)
+                if result:
+                    return result
         return self.index()
 
     def iterfieldsets(self):
