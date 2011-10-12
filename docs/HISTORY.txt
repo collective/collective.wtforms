@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0a3 (2011-10-11)
+------------------
+
+- fix issue where initial form data wouldn't work
+  in some instances.
+
 
 1.0a2 (2011-10-06)
 ------------------
