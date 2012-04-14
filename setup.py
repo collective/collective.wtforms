@@ -5,7 +5,7 @@ version = '1.0a2'
 
 setup(name='collective.wtforms',
       version=version,
-      description="plone wtforms integration",
+      description="Plone wtforms integration",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
