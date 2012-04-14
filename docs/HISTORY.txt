@@ -7,6 +7,9 @@ Changelog
 - do not use and display dummy default form title and description
   [keul]
 
+- moved the field description after label, where commonly is
+  [keul]
+
 1.0a2 (2011-10-06)
 ------------------
 
