@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0a5 (Unreleased)
+------------------
+
+- do not use and display dummy default form title and description
+  [keul]
+
 1.0a4 (2012-08-29)
 ------------------
 
@@ -11,7 +17,6 @@ Changelog
 
 - fix issue where initial form data wouldn't work
   in some instances.
-
 
 1.0a2 (2011-10-06)
 ------------------

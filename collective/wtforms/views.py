@@ -18,8 +18,8 @@ class PostData(dict):
 
 class WTFormView(BrowserView):
     formClass = None
-    label = 'Form Title'
-    description = 'Form Description'
+    label = ''
+    description = ''
     prefix = 'wtform'
     buttonPrefix = 'form.actions.'
     wrapWithFieldset = True
