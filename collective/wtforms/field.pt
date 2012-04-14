@@ -5,6 +5,7 @@
     <span class="fieldRequired" title="Required" tal:condition="nocall: python: field.flags.required">
       (Required)
     </span>
+    <div class="formHelp" tal:condition="field/description" tal:content="field/description">Form Help.</div>
     <div class="errors">
       <ul tal:repeat="error errors">
         <li tal:content="error" tal:condition="python: type(error) != list"/>
@@ -13,7 +14,6 @@
     </div>
     <div class="widget">
       <div tal:replace="structure field" />
-      <div class="formHelp" tal:content="field/description">Form Help.</div>
     </div>
   </div>
 </tal:field>
