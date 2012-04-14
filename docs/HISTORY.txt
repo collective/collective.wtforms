@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0a3 (Unreleased)
+------------------
+
+- do not use and display dummy default form title and description
+  [keul]
 
 1.0a2 (2011-10-06)
 ------------------

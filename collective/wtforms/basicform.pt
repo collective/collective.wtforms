@@ -9,13 +9,13 @@
 
 <metal:title fill-slot="content-title">
   <metal:content-title define-macro="content-title">
-    <h1 class="documentFirstHeading" tal:content="view/label"></h1>
+    <h1 class="documentFirstHeading" tal:condition="view/label" tal:content="view/label"></h1>
   </metal:content-title>
 </metal:title>
 
 <metal:description fill-slot="content-description">
   <metal:content-description define-macro="content-description">
-    <div class="documentDescription" tal:content="view/description"></div>
+    <div class="documentDescription" tal:condition="view/description" tal:content="view/description"></div>
   </metal:content-description>
 </metal:description>
 
