@@ -10,6 +10,13 @@ Changelog
 - moved the field description after label, where commonly is
   [keul]
 
+- added locales directory, for being able to translate basic
+  default buttons
+  [keul]
+
+- added italian translation
+  [keul]
+
 1.0a2 (2011-10-06)
 ------------------
 

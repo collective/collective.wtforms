@@ -3,7 +3,7 @@ from AccessControl import Unauthorized
 from Products.Five import BrowserView
 from plone.memoize.view import memoize
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
+from collective.wtforms import messageFactory as _
 
 class PostData(dict):
     """
@@ -25,8 +25,8 @@ class WTFormView(BrowserView):
     wrapWithFieldset = True
     csrfProtect = True
     buttons = (
-        'Save',
-        'Cancel'
+        _(u'Save'),
+        _(u'Cancel')
     )
 
     fieldsets = ()
