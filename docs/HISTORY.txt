@@ -20,6 +20,13 @@ Changelog
 - fix issue where initial form data wouldn't work
   in some instances.
 
+- added locales directory, for being able to translate basic
+  default buttons
+  [keul]
+
+- added italian translation
+  [keul]
+
 1.0a2 (2011-10-06)
 ------------------
 
