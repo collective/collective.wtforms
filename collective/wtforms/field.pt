@@ -2,7 +2,9 @@
            tal:define="field nocall: options/field;
                        errors field/errors">
   <div class="field" tal:attributes="class python: errors and 'field error' or 'field'">
-    <label tal:replace="structure field/label"></label>
+    <label i18n:translate=""
+	       tal:attributes="for field/label/field_id"
+	       tal:content="field/label/text"></label>
     <span class="fieldRequired" i18n:domain="plone" i18n:translate="label_required"
 	      tal:condition="nocall: python: field.flags.required">
       (Required)
