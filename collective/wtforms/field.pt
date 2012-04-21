@@ -1,15 +1,17 @@
-<tal:field tal:define="field nocall: options/field;
+<tal:field i18n:domain="collective.wtforms"
+           tal:define="field nocall: options/field;
                        errors field/errors">
   <div class="field" tal:attributes="class python: errors and 'field error' or 'field'">
     <label tal:replace="structure field/label"></label>
-    <span class="fieldRequired" title="Required" tal:condition="nocall: python: field.flags.required">
+    <span class="fieldRequired" i18n:domain="plone" i18n:translate="label_required"
+	      tal:condition="nocall: python: field.flags.required">
       (Required)
     </span>
     <div class="formHelp" tal:condition="field/description" tal:content="field/description">Form Help.</div>
     <div class="errors">
       <ul tal:repeat="error errors">
-        <li tal:content="error" tal:condition="python: type(error) != list"/>
-        <li tal:content="python: error[0]" tal:condition="python: type(error) == list"/>
+        <li i18n:translate="" tal:content="error" tal:condition="python: type(error) != list"/>
+        <li i18n:translate="" tal:content="python: error[0]" tal:condition="python: type(error) == list"/>
       </ul>
     </div>
     <div class="widget">
