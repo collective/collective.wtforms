@@ -1,5 +1,6 @@
 <form action="" method="post"
-    class="edit-form enableUnloadProtection wtform" enctype="multipart/form-data"
+    class="edit-form enableUnloadProtection enableFormTabbing wtform" enctype="multipart/form-data"
+	tal:define="plone_view context/@@plone"
     id="" tal:attributes="action request/URL;
                           id string:${view/prefix}-${view/viewname}">
 
@@ -7,9 +8,13 @@
     
   <tal:fieldset tal:repeat="fieldset view/iterfieldsets">
     <fieldset tal:define="legend python: fieldset[0];
-                          fields python: fieldset[1];"
+                          fields python: fieldset[1];
+						  fieldset_id python:plone_view.normalizeString(legend);"
+			  tal:attributes="id string:fieldset-$fieldset_id;"
               tal:omit-tag="not: view/wrapWithFieldset">
-      <legend tal:content="legend" tal:condition="python:view.wrapWithFieldset and legend">Fieldset Title</legend>
+      <legend tal:content="legend"
+              tal:attributes="id string:fieldsetlegend-$fieldset_id;"
+	          tal:condition="python:view.wrapWithFieldset and legend">Fieldset Title</legend>
       <tal:fields tal:repeat="field fields">
         <div tal:replace="structure python: view.renderField(field)" />
       </tal:fields>

@@ -7,15 +7,21 @@ Changelog
 - do not use and display dummy default form title and description
   [keul]
 
-- moved the field description after label, where commonly is
+- moved the field description after label, where commonly is on Plone
   [keul]
 
-- added locales directory, for being able to translate basic
-  default buttons
+- added locales directory, for being able to translate basic default buttons
   [keul]
 
-- added italian translation
+- added the core WTForms translation, to be usable inside Plone
   [keul]
+
+- provided italian translation
+  [keul]
+
+- enabled the Plone form tabbing feature
+  [keul]
+
 
 1.0a2 (2011-10-06)
 ------------------
