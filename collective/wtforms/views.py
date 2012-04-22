@@ -96,7 +96,7 @@ class WTFormView(BrowserView):
     @memoize
     def hasButtonSubmitted(self):
         for button in self.buttons:
-            if "%s%s" % (self.buttonPrefix, button) in self.request:
+            if "%s%s" % (self.buttonPrefix, button) in self.request.form:
                 return button
 
     def __call__(self):
