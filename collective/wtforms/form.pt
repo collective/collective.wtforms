@@ -23,8 +23,10 @@
       <tal:buttons tal:repeat="button view/buttons">
         <input type="submit" 
             tal:define="fixedName python: view.fixName(button);
-                        name string:${view/buttonPrefix}${fixedName}"
-            tal:attributes="id name; name name; value button" class="context" /> 
+                        name string:${view/buttonPrefix}${fixedName};
+                        klass string:context btn;
+                        klass python: repeat['button'].index == 0 and klass + ' btn-primary' or klass"
+            tal:attributes="id name; name name; value button; class klass" class="context btn" /> 
       </tal:buttons>
     </span>
   </div>
