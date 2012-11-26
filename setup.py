@@ -5,8 +5,8 @@ version = '1.0a4'
 
 setup(name='collective.wtforms',
       version=version,
-      description="plone wtforms integration",
-      long_description=open("README.txt").read() + "\n" +
+      description="Plone wtforms integration",
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers

@@ -1,8 +1,9 @@
 Introduction
 ============
 
-collective.wtforms is plone integration with the WTForms form library.
+collective.wtforms is plone integration with the `WTForms`__ form library.
 
+__ http://packages.python.org/WTForms/
 
 Basic Complete Form Example
 ---------------------------
