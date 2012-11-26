@@ -25,7 +25,8 @@ setup(name='collective.wtforms',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'WTForms'
+          'WTForms',
+          'unidecode'
       ],
       extras_require=dict(
           tests=['plone.app.testing']

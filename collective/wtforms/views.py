@@ -4,6 +4,17 @@ from Products.Five import BrowserView
 from plone.memoize.view import memoize
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from collective.wtforms import messageFactory as _
+from unidecode import unidecode
+
+
+def convertStr(v):
+    if type(v) == str:
+        try:
+            v = unicode(v, 'utf8')
+        except:
+            v = unidecode(v)
+    return v
+
 
 class PostData(dict):
     """
@@ -12,7 +23,10 @@ class PostData(dict):
     def getlist(self, key):
         v = self[key]
         if not isinstance(v, (list, tuple)):
-            v = [v]
+            v = [convertStr(v)]
+        else:
+            # is a list...
+            v = [convertStr(v2) for v2 in v]
         return v
 
 
@@ -65,7 +79,10 @@ class WTFormView(BrowserView):
         else:
             data = {}
             formdata = PostData(self.request.form)
+
         data.update(self.request.form)
+        for key, value in data.items():
+            data[key] = convertStr(value)
         form = self.formClass(formdata, prefix=self.prefix, **data)
         self.mungeForm(form)
         return form

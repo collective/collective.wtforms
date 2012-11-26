@@ -4,6 +4,9 @@ Changelog
 1.0a5 (Unreleased)
 ------------------
 
+- handle unicode data
+  [vangheem]
+
 - do not use and display dummy default form title and description
 
 - moved the field description after label, where commonly is
