@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0a5 (Unreleased)
+1.0a5 (2012-11-26)
 ------------------
 
 - handle unicode data
